@@ -1,6 +1,6 @@
 # Basic Price Prediction Node
 
-This repository provides an example [Allora network](https://docs.allora.network/) worker node, designed to offer price predictions. The primary objective is to demonstrate the use of a basic inference model running within a dedicated container, showcasing its integration with the Allora network infrastructure to contribute valuable inferences.
+This repository provides an example [Allora network](https://docs.allora.network/) worker node, designed to offer Election Probability predictions. The primary objective is to demonstrate the use of a basic inference model running within a dedicated container, showcasing its integration with the Allora network infrastructure to contribute valuable inferences.
 
 ## Components
 
@@ -26,27 +26,10 @@ A complete working example is provided in the `docker-compose.yml` file.
 
     Here are the currently accepted configurations:
     - TOKEN
-    Must be one in ('ETH','SOL','BTC','BNB','ARB'). 
+    Must be one in ('D' OR 'R'). 
     Note: if you are using `Binance` as the data provider, any token could be used.
-    If you are using Coingecko, you should add its `coin_id` in the [token_map here](https://github.com/allora-network/basic-coin-prediction-node/blob/main/updater.py#L107). Find [more info here](https://docs.coingecko.com/reference/simple-price) and the [list here](https://docs.google.com/spreadsheets/d/1wTTuxXt8n9q7C4NDXqQpI3wpKu1_5bGVmP9Xz0XGSyU/edit?usp=sharing).
-    - TRAINING_DAYS
-    Must be an `int` >= 1. 
-    Represents how many days of historical data to use. 
-    - TIMEFRAME
-    This should be in this form: `10min`, `1h`, `1d`, `1m`, etc.
-    Note: For Coingecko, Data granularity (candle's body) is automatic - [see here](https://docs.coingecko.com/reference/coins-id-ohlc). To avoid downsampling, it is recommanded to use with Coingecko:
-        - TIMEFRAME >= 30m if TRAINING_DAYS <= 2
-        - TIMEFRAME >= 4h if TRAINING_DAYS <= 30
-        - TIMEFRAME >= 4d if TRAINING_DAYS >= 31
     - MODEL
-    Must be one in ('LinearRegression','SVR','KernelRidge','BayesianRidge'). 
-    You can easily add support for any other models by [adding it here](https://github.com/allora-network/basic-coin-prediction-node/blob/main/model.py#L133).
-    - REGION
-    Used for the Binance API. This should be in this form: `US`, `EU`, etc.
-    - DATA_PROVIDER
-    Must be `binance` or `coingecko`. Feel free to add support for other data providers to personalize your model!
-    - CG_API_KEY
-    This is your `Coingecko` API key, if you've set `DATA_PROVIDER=coingecko`.
+    Currenly configured to default using XGB
 
 3. **Copy and Populate Worker Configuration**
 
@@ -91,14 +74,14 @@ This setup allows you to develop your model without the need to bring up the off
     ```
     Wait for the initial data load.
 
-2. Send requests to the inference model. For example, request ETH price inferences:
+2. Send requests to the inference model. For example, request probability of Democrats(`D`) winning:
     
     ```sh
-    curl http://127.0.0.1:8000/inference/ETH
+    curl http://127.0.0.1:8000/inference/D
     ```
     Expected response:
     ```json
-    {"value":"2564.021586281073"}
+    {"value":"55.01"}
     ```
 
 3. Update the node's internal state (download pricing data, train, and update the model):
