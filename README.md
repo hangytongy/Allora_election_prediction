@@ -27,7 +27,6 @@ A complete working example is provided in the `docker-compose.yml` file.
     Here are the currently accepted configurations:
     - TOKEN
     Must be one in ('D' OR 'R'). 
-    Note: if you are using `Binance` as the data provider, any token could be used.
     - MODEL
     Currenly configured to default using XGB
 
