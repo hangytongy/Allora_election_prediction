@@ -10,13 +10,13 @@ model_file_path = os.path.join(data_base_path, "model")
 
 #TOKEN = os.getenv("TOKEN").upper()
 TOKEN = ['R','D']
-TRAINING_DAYS = os.getenv("TRAINING_DAYS")
-TIMEFRAME = os.getenv("TIMEFRAME")
-MODEL = os.getenv("MODEL")
-REGION = os.getenv("REGION").lower()
-if REGION in ["us", "com", "usa"]:
-    REGION = "us"
-else:
-    REGION = "com"
-DATA_PROVIDER = os.getenv("DATA_PROVIDER").lower()
-CG_API_KEY = os.getenv("CG_API_KEY", default=None)
+#TRAINING_DAYS = os.getenv("TRAINING_DAYS")
+#TIMEFRAME = os.getenv("TIMEFRAME")
+#MODEL = os.getenv("MODEL")
+#REGION = os.getenv("REGION").lower()
+#if REGION in ["us", "com", "usa"]:
+#    REGION = "us"
+#else:
+#    REGION = "com"
+#DATA_PROVIDER = os.getenv("DATA_PROVIDER").lower()
+#CG_API_KEY = os.getenv("CG_API_KEY", default=None)
