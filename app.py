@@ -9,14 +9,15 @@ app = Flask(__name__)
 
 def update_data():
     """Download price data, format data and train model."""
-    files = download_data(TOKEN)
-    train_model(TOKEN)
+    for i in TOKEN:
+        files = download_data(i)
+        train_model(i)
 
 
 @app.route("/inference/<string:token>")
 def generate_inference(token):
     """Generate inference for given token."""
-    if not token or token.upper() != TOKEN:
+    if not token or token.upper() not in TOKEN:
         error_msg = "Token is required" if not token else "Token not supported"
         return Response(json.dumps({"error": error_msg}), status=400, mimetype='application/json')
 
