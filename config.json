@@ -1,7 +1,7 @@
 {
     "wallet": {
         "addressKeyName": "testkey",
-        "addressRestoreMnemonic": "casual clog confirm whale book usual cause merit loyal steel garment attack favorite odor violin essay marriage list tragic sustain ritual sheriff lottery chimney",
+        "addressRestoreMnemonic": "",
         "alloraHomeDir": "",
         "gas": "1000000",
         "gasAdjustment": 1.0,
@@ -10,15 +10,22 @@
         "delay": 1,
         "submitTx": true
     },
-    "worker": [
-        {
-            "topicId": 2,
-            "inferenceEntrypointName": "api-worker-reputer",
-            "loopSeconds": 5,
-            "parameters": {
-                "InferenceEndpoint": "http://inference:8000/inference/{Token}",
-                "Token": "ETH"
-            }
-        }
-    ]
+        "worker": [
+       {
+           "topicId": 11,
+           "inferenceEntrypointName": "api-worker-reputer",
+           "loopSeconds": 5,
+           "parameters": {
+               "InferenceEndpoint": "http://inference:8002/inference/D"
+           }
+       },
+       {
+           "topicId": 11,
+           "inferenceEntrypointName": "api-worker-reputer",
+           "loopSeconds": 5,
+           "parameters": {
+               "InferenceEndpoint": "http://inference:8002/inference/R"
+           }
+       }
+   ]
 }

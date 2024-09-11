@@ -7,4 +7,4 @@ aiohttp
 multiprocess
 scikit_learn
 python-dotenv
-tensorflow
+joblib
