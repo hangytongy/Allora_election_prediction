@@ -42,11 +42,12 @@ def get_data(url):
     return df
 
 def download_data(token):
+    print(f"base path : {data_base_path}")
+    os.makedirs(data_base_path, exist_ok=True)
     if token == 'R':
         url = "https://clob.polymarket.com/prices-history?interval=all&market=21742633143463906290569050155826241533067272736897614950488156847949938836455&fidelity=720"
         data = get_data(url)
         save_path = os.path.join(data_base_path,'polymarket_R.csv')
-        os.makedirs(os.path.dirname(data_base_path), exist_ok=True)
         data.to_csv(save_path)
 
     elif token =='D':
@@ -65,6 +66,8 @@ def train_model(token):
         training_price_data_path = os.path.join(data_base_path, "polymarket_D.csv")
 
     df = pd.read_csv(training_price_data_path)
+
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'])
 
     df['year'] = df['Timestamp'].dt.year
     df['month'] = df['Timestamp'].dt.month
@@ -97,7 +100,7 @@ def train_model(token):
     print(f"R^2 Score: {r2}")
 
     # create the model's parent directory if it doesn't exist
-    os.makedirs(os.path.dirname(model_file_path), exist_ok=True)
+    os.makedirs(model_file_path, exist_ok=True)
     if token == 'R':
         save_path_model = os.path.join(model_file_path,'xgb_model_R.pkl')
     elif token == 'D':
@@ -111,10 +114,10 @@ def train_model(token):
 def get_inference(token):
 
     if token == 'R':
-        save_path_model = os.path.join(model_file_path,'xgb_model.pkl_R')
+        save_path_model = os.path.join(model_file_path,'xgb_model_R.pkl')
 
     elif token == 'D':
-        save_path_model = os.path.join(model_file_path,'xgb_model.pkl_D')
+        save_path_model = os.path.join(model_file_path,'xgb_model_D.pkl')
 
     loaded_model = joblib.load(save_path_model)
     print("loaded model succesfully")
