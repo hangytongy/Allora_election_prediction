@@ -1,7 +1,7 @@
 import json
 from flask import Flask, Response
 from model import download_data, train_model, get_inference
-from config import model_file_path, TOKEN, TIMEFRAME, TRAINING_DAYS, REGION, DATA_PROVIDER
+from config import model_file_path, TOKEN
 
 
 app = Flask(__name__)
