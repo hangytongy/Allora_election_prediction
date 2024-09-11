@@ -46,12 +46,14 @@ def download_data(token):
         url = "https://clob.polymarket.com/prices-history?interval=all&market=21742633143463906290569050155826241533067272736897614950488156847949938836455&fidelity=720"
         data = get_data(url)
         save_path = os.path.join(data_base_path,'polymarket_R.csv')
+        os.makedirs(os.path.dirname(data_base_path), exist_ok=True)
         data.to_csv(save_path)
 
     elif token =='D':
         url = "https://clob.polymarket.com/prices-history?interval=all&market=69236923620077691027083946871148646972011131466059644796654161903044970987404&fidelity=720"
         data = get_data(url)
         save_path = os.path.join(data_base_path,'polymarket_D.csv')
+        os.makedirs(os.path.dirname(data_base_path), exist_ok=True)
         data.to_csv(save_path)
 
 def train_model(token):
