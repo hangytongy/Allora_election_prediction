@@ -26,7 +26,7 @@ A complete working example is provided in the `docker-compose.yml` file.
 
     Here are the currently accepted configurations:
     - TOKEN
-    Must be one in ('D' OR 'R'). 
+    Must be one in (`D` OR `R`). 
     - MODEL
     Currenly configured to default using XGB
 
