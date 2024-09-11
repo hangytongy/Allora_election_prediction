@@ -8,3 +8,4 @@ multiprocess
 scikit_learn
 python-dotenv
 joblib
+xgboost

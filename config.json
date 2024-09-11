@@ -1,7 +1,7 @@
 {
     "wallet": {
-        "addressKeyName": "testkey",
-        "addressRestoreMnemonic": "",
+        "addressKeyName": "keytome",
+        "addressRestoreMnemonic": "injury truck index boat require always vague vintage spin weather pole junior advice practice require cool mass husband size nation cute loud strike salt",
         "alloraHomeDir": "",
         "gas": "1000000",
         "gasAdjustment": 1.0,
