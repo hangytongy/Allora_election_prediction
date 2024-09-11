@@ -1,0 +1,24 @@
+{
+    "wallet": {
+        "addressKeyName": "testkey",
+        "addressRestoreMnemonic": "casual clog confirm whale book usual cause merit loyal steel garment attack favorite odor violin essay marriage list tragic sustain ritual sheriff lottery chimney",
+        "alloraHomeDir": "",
+        "gas": "1000000",
+        "gasAdjustment": 1.0,
+        "nodeRpc": "https://allora-rpc.testnet.allora.network/",
+        "maxRetries": 1,
+        "delay": 1,
+        "submitTx": true
+    },
+    "worker": [
+        {
+            "topicId": 2,
+            "inferenceEntrypointName": "api-worker-reputer",
+            "loopSeconds": 5,
+            "parameters": {
+                "InferenceEndpoint": "http://inference:8000/inference/{Token}",
+                "Token": "ETH"
+            }
+        }
+    ]
+}
